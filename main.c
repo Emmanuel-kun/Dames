@@ -28,15 +28,23 @@ donner la possibilite de revenir sur un coup.
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "dames.h"
 
 int main() {
 
     struct damier *jeu = malloc(sizeof(* jeu));
-    jeu->nbre_noirs=20;
-    jeu->nbre_blancs=20;
+    if(jeu == NULL)
+        printf("Erreur d'allocation memoire (jeu)");
+    else {
+        jeu->nbre_noirs = 20;
+        jeu->nbre_blancs = 20;
+    }
 
-    struct histo *historique;
+    struct histo *historique = malloc(sizeof(* historique));
+    if(historique == NULL)
+        printf("Erreur d'allocation memoire (historique)");
+    else {
 
     return 0;
 }

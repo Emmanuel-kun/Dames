@@ -9,8 +9,6 @@
 #include <stdlib.h>
 #include "dames.h"
 
-
-
 void initJeu(struct damier * jeu, struct histo * historique)
 {
     int cpt_b = 0, cpt_n = 0;
@@ -89,22 +87,49 @@ void afficherHisto(struct histo * h)
     {
         afficherHisto(h->suivant);
     }
-
-    printf("le pion du joueur %d  a ete deplace de [%d,%d]en [%d,%d]",h->joueur,h->depart->x,h->depart->y,h->arrivee->x,h->arrivee->y);
+    printf("Coup n° %d : \n", &h->coup);
+    printf("Le pion du joueur %d  a ete deplace de [%d,%d]en [%d,%d]",&h->joueur,&h->depart->x,&h->depart->y,&h->arrivee->x,&h->arrivee->y);
+    printf("-----------------------------------------------------------");
 }
-
-
 
 void sauvegarde(struct histo * h, char* nomSauvegarde){
 
     printf("\nVeuillez entrer le nom de votre sauvegarde : ");
     scanf("%s",nomSauvegarde);
-
+    struct histo *courrant = h;
     FILE* f = fopen(nomSauvegarde,"w");
 
-    while (h->coup != NULL){
+    while (courrant->suivant != NULL){
+
+        fputs((char*) &courrant->coup,f);
+        fputs(" ", f);
+        fputs((char*) &courrant->joueur,f);
+        fputs(" ", f);
+        fputs((char*) &courrant->depart->x,f);
+        fputs(" ", f);
+        fputs((char*) &courrant->depart->y,f);
+        fputs(" ", f);
+        fputs((char*) &courrant->arrivee->x,f);
+        fputs(" ", f);
+        fputs((char*) &courrant->arrivee->y,f);
+        fputs(" ", f);
+
+        if(courrant->pionMange != NULL)
+        {
+            fputs((char*) &courrant->pionMange->couleur,f);
+            fputs(" ", f)
+            fputs((char*) &courrant->pionMange->c->x,f);
+            fputs(" ", f)
+            fputs((char*) &courrant->pionMange->c->y,f);
+            fputs(" ", f)
+        }
+
+        fputs("\n",f);
+
+
+
+
+
 
     }
-
-
 }
