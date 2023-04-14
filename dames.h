@@ -41,6 +41,11 @@ struct damier{
     int nb_blancs;
 };
 
+struct personne{
+    int joueur_actuel;
+    int adversaire;
+};
+
 int menu();
 
 void initJeu(struct damier * jeu);
@@ -50,6 +55,16 @@ void affichage(struct damier *jeu);
 
 unsigned char vide(int x , int y);
 
+//FONCTIONS JEU
+int tour_joueur(int tour, struct personne joueur);
+int adversaire(int tour, struct personne joueur);
+
+void deplacer_pion(int numero_joueur,struct damier *jeu);
+int effacer_pion(int x, int y, struct damier *jeu);
+
+void jouer();
+
+//FONCTIONS SAUVEGARDER
 void addHisto(int joueur,struct emplacement *depart,struct emplacement *arrivee, struct histo * dernierCoup,struct histo * nouveauCoup, struct pion * pionMange);
 
 struct histo rollback(struct histo dernierCoup, struct damier jeu);

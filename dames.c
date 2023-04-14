@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include "dames.h"
 
+
 void initJeu(struct damier * jeu)
 {
     int cpt_b = 0, cpt_n = 0;
@@ -32,8 +33,7 @@ void initJeu(struct damier * jeu)
     }
 }
 
-
-
+//AFFICHAGE
 void affichage(struct damier *jeu)
 {
     int x = 0;
