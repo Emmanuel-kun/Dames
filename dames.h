@@ -7,7 +7,6 @@
  *
  */
 
-
 struct emplacement
 {
     int x;
@@ -17,12 +16,12 @@ struct emplacement
 
 struct pion{
     char couleur;
-    struct emplacement * c
+    struct emplacement * c;
 };
 
 /*
  * Structure de notre pile d'historique
- * Le début pointe sur le haut de la pile, on a pas besoin de dépiler d'un coup
+ * Le début pointe sur le haut de la pile, on n'a pas besoin de dépiler d'un coup
  * */
 struct histo{
     struct emplacement * depart;
@@ -38,16 +37,15 @@ struct histo{
 //structure utilisée
 struct damier{
     unsigned char plateau[10][10];
-    int nbre_noirs;
-    int nbre_blancs;
+    int nb_noirs;
+    int nb_blancs;
 };
 
 int menu();
 
-void initJeu(struct damier * jeu, struct histo * historique);
+void initJeu(struct damier * jeu);
 
-void jouer();
-
+//FONCTIONS AFFICHAGES
 void affichage(struct damier *jeu);
 
 unsigned char vide(int x , int y);

@@ -34,17 +34,29 @@ donner la possibilite de revenir sur un coup.
 int main() {
 
     struct damier *jeu = malloc(sizeof(* jeu));
-    if(jeu == NULL)
+
+    if(jeu == NULL) {
         printf("Erreur d'allocation memoire (jeu)");
-    else {
-        jeu->nbre_noirs = 20;
-        jeu->nbre_blancs = 20;
+        return EXIT_FAILURE;
+    } else {
+        jeu->nb_noirs = 20;
+        jeu->nb_blancs = 20;
     }
 
     struct histo *historique = malloc(sizeof(* historique));
-    if(historique == NULL)
-        printf("Erreur d'allocation memoire (historique)");
-    else {
 
+    char *nomChargement;
+
+    /*if(historique == NULL) {
+        printf("Erreur d'allocation memoire (historique)");
+        return EXIT_FAILURE;
+    } else {
+        printf("Veuillez entrer le nom de votre chargement");
+        scanf("%s",nomChargement);
+
+        //historique=charger(nomChargement,jeu);
+    }*/
+    initJeu(jeu);
+    affichage(jeu);
     return 0;
 }
